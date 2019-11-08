@@ -15,11 +15,11 @@ class CreateFlashcardsTable extends Migration
     {
         Schema::create('flashcards', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->tinyInteger('type_id');
-            $table->text('word');
-            $table->text('upload_path');
+            $table->tinyInteger('type_id')->unique();
+            $table->text('word')->nullable();
+            $table->text('upload_path')->nullable();
             $table->string('created_by');
-            $table->string('updated_by');
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }
