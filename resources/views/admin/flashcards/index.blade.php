@@ -1,20 +1,22 @@
 @extends('admin.flashcards.parent')
-
-@section('main')
-
+@section('content')
+    <h3 align="center">FlashCards</h3>
 <div align="right">
-    <a href="{{ route('admin.flashcard.create') }}" class="btn btn-success btn-sm" style="margin-bottom: 10px">Add</a>
+    <a href="{{ route('admin.flashcard.create') }}" class="btn btn-success btn-sm" style="margin-bottom: 10px;
+        margin-right: 130px">Add</a>
 </div>
 @if($message = Session::get('success'))
     <div class="alert alert-success">
         <p>{{ $message }}</p>
     </div>
 @endif
+    <div class="container">
     <table class="table table-bordered table-striped">
         <tr style="text-align: center">
             <th width="5%">#</th>
             <th width="20%">Image</th>
-            <th width="53%">Word</th>
+            <th width="43%">Word</th>
+            <th width="10%">Type_id</th>
             <th width="40%">Action</th>
         </tr>
         @foreach($flashcards as $flashcard)
@@ -26,6 +28,7 @@
                     @endif
                 </td>
                 <td>{{ $flashcard->word }}</td>
+                <td>{{ $flashcard->type_id }}</td>
                 <td>
                     <form action="" method="post">
                         <a href="" class="btn btn-primary">Show</a>
@@ -37,6 +40,6 @@
             </tr>
         @endforeach
     </table>
+    </div>
 {!! $flashcards->links() !!}
-
 @endsection
